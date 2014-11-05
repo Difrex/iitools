@@ -16,7 +16,7 @@ my $data = './data/db.sql';
 my $ii = {
     # ii node auth string
     auth => '',
-    # ii url with /u/
+    # ii url with /
     ii_node_url => '',
     # ii echo
     ii_echo => '',
