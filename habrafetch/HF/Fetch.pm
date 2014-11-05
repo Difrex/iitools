@@ -5,6 +5,8 @@ use warnings;
  
 use XML::FeedPP;
 
+use HTML::WikiConverter;
+
 sub new {
     my $class = shift;
     
@@ -33,11 +35,10 @@ sub fetch {
             
             next if $title =~ m/\[Из.+\].+/;
 
-            $description =~ s/<br\/>/\n/g;
-            $description =~ s/<a href="(.+)">(.+)<\/a>/$2($1)/g;
-            $description =~ s/&.+;//g;
-            $description =~ s/<img src="\/\/(.+)"\/>/$1/g;
-            $description =~ s/<.+>(.+)<\/.+>/$1/g;
+            my $wc = new HTML::WikiConverter( dialect => 'Markdown' );
+            $description = $wc->html2wiki( $description );
+
+            $description =~ s/<br \/>/ /g;
 
             push( @data, {title => $title, body => $description} );
         }
