@@ -36,7 +36,7 @@ sub fetch {
             $description =~ s/<br\/>/\n/g;
             $description =~ s/<a href="(.+)">(.+)<\/a>/$2($1)/g;
             $description =~ s/&.+;//g;
-            $description =~ s/<img src="\/\/(.+)"\/>/[img $1]/g;
+            $description =~ s/<img src="\/\/(.+)"\/>/$1/g;
             $description =~ s/<.+>(.+)<\/.+>/$1/g;
 
             push( @data, {title => $title, body => $description} );
