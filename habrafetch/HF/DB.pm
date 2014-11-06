@@ -33,11 +33,9 @@ sub check_md5 {
     while ( my @h = $sth->fetchrow_array() ) {
         my ($base_hash) = @h;
         if ( $hash eq $base_hash ) {
-            print "Not OK\n";
             return 1;
         }
         else {
-            print "OK\n";
             return 0;
         }
     }
