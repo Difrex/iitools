@@ -33,7 +33,7 @@ sub fetch {
             my $title = $i->{title};
             my $description = $i->{description};
             
-            next if $title =~ m/\[Из.+\].+/;
+            # next if $title =~ m/\[Из.+\].+/;
 
             my $wc = new HTML::WikiConverter( dialect => 'Markdown' );
             $description = $wc->html2wiki( $description );
