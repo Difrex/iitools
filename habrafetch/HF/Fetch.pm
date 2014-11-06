@@ -39,6 +39,10 @@ sub fetch {
             $description = $wc->html2wiki( $description );
 
             $description =~ s/<br \/>/ /g;
+            $description =~ s/<div .+>//g;
+            $description =~ s/<\/div>//g;
+            $description =~ s/<.+>//g;
+            $description =~ s/<\/.+>//g;
 
             push( @data, {title => $title, body => $description} );
         }
